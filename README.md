@@ -5,3 +5,7 @@ algoritmik merupakan bahasa untuk *pseudocode*, meskipun tetap memiliki
 beberapa aturan baku. Hal ini menyebabkan kode notasi algoritmik yang dibuat
 tidak bisa di-interpret secara bebas dan perlu mengikuti beberapa aturan yang
 ada di diktat pemrograman prosedural ITB.
+
+## Inspiration
+Inspired heavily by [Bob Nystrom's](https://github.com/munificent)
+[book](https://craftinginterpreters.com/)

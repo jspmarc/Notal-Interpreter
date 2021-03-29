@@ -4,7 +4,7 @@ mod tokens;
 use std::{env, fs::File, io, io::prelude::*};
 
 fn main() -> io::Result<()> {
-    let args: Vec<String> = env::args().collect::<Vec<String>>();
+    let args = env::args().collect::<Vec<String>>();
 
     if args.len() > 2 {
         eprintln!("Penggunaan: {} <path/ke/file>", &args[0]);
@@ -12,7 +12,7 @@ fn main() -> io::Result<()> {
     }
 
     match args.len() {
-        1 => run_interpreter()?,
+        1 => run_repl()?,
         2 => run_file(&args[1]).expect("Terjadi kesalahan saat membaca file."),
         _ => {} // do nothing
     }
@@ -30,14 +30,26 @@ fn run_file(file_path: &str) -> io::Result<()> {
             break;
         }
 
-        println!("contents: {:?} ", line);
+        println!("contents: {:?} ", &line);
         line = "".to_string(); // kalo ga diginiin ntar dia malah append string
     }
 
     Ok(())
 }
 
-fn run_interpreter() -> io::Result<()> {
-    print!("Hello, world!");
+#[allow(unreachable_code)]
+fn run_repl() -> io::Result<()> {
+    let mut line = String::new();
+    let stdin = io::stdin();
+
+    loop {
+        print!("> ");
+        io::stdout().flush().expect("Terjadi sebuah kesalahan.");
+        stdin.read_line(&mut line).expect("Kesalahan saat membaca input.");
+
+        println!("{:?}", &line);
+        line = "".to_string();
+    }
+
     Ok(())
 }

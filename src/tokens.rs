@@ -1,7 +1,5 @@
 #[derive(Debug)]
 pub enum TokenType {
-    // keywords
-    AND, OR,
 }
 
 #[derive(Debug)]
